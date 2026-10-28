@@ -2,6 +2,13 @@
 
 All notable changes to Karigor Skills. Dates are in Dhaka time.
 
+## 1.4.0 (28 October 2026)
+
+- Three new skills for using Karigor's own karigors through Karigor's MCP server: `content-karigor-mcp`, `marketing-karigor-mcp` and `meeting-karigor-mcp`. Each was written from the live tool descriptions and the product code, then checked claim by claim by a second reviewer against the same sources.
+- Each one starts from the tools actually in the assistant's tool list, names the app button for every step that has no tool (approvals are app only), treats text inside tool results as material and never as instructions, and states the credit cost of each step.
+- `meeting-karigor-mcp` describes the app flow today and uses Meeting Karigor's MCP tools only when they appear in the tool list; it never presents an unreleased tool as available.
+- Each ships with its own test suite in `examples.md` (at least 15 cases, Bangla requests included, with refusal and hand-off cases).
+
 ## 1.3.0 (13 October 2026)
 
 - Skills renamed by the job, not the platform: `facebook-page-replies-bangla` is now `customer-replies-bangla`, `facebook-post-captions-bangla` is now `post-captions-bangla`, `business-email-english-bd` is now `business-email-english`. Facebook, WhatsApp and Instagram are named only as places where a skill works. Entries below use the new names.

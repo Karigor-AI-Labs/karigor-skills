@@ -2,7 +2,7 @@
 
 Every Karigor agent is engineered from skills: a written procedure, the rules it must follow, and the test cases it must pass. We engineer, evaluate and run the agents. The skills underneath, we give away.
 
-These three are written for Bangladeshi businesses. They are packaged for Claude, ChatGPT, Gemini, Codex and any tool that reads the open Agent Skills format. Free under CC BY 4.0, no sign-up.
+The first three are written for Bangladeshi businesses. The next three teach any AI assistant to use Karigor's own karigors through Karigor's MCP server. They are packaged for Claude, ChatGPT, Gemini, Codex and any tool that reads the open Agent Skills format. Free under CC BY 4.0, no sign-up.
 
 ## The skills
 
@@ -11,6 +11,16 @@ These three are written for Bangladeshi businesses. They are packaged for Claude
 | [`customer-replies-bangla`](customer-replies-bangla/) | Customer replies for online shops, in Bangla | Short, polite replies (in Bangla, or English or Banglish when the customer writes that way) for price, delivery, stock, sizes, cash on delivery and bKash, orders and refusals. Works wherever customers message a shop: Facebook Messenger and comments, WhatsApp, Instagram. Uses only your own shop table, so it never invents a price. |
 | [`post-captions-bangla`](post-captions-bangla/) | Post captions in Bangla | Captions in Bangla or English for products, offers and Bangladeshi occasions, for wherever the post goes, such as Facebook or Instagram. No fake urgency, no false claims. |
 | [`business-email-english`](business-email-english/) | Professional business email in English | Clear, warm English emails for enquiries, follow-ups, quotations, payment reminders, apologies and meetings. Ask in Bangla, get the email in English. |
+
+## Skills for using Karigor's karigors through MCP
+
+These need a Karigor account and an AI assistant connected to Karigor's MCP server. Each one works only from the tools that are actually in the assistant's tool list, names the app button for every step that has no tool, and never approves or posts on its own.
+
+| Skill | The job | What it does |
+|---|---|---|
+| [`content-karigor-mcp`](content-karigor-mcp/) | Content Karigor from your own AI | Plan a post with a brief that holds every fact, get Content Karigor's draft and your own, let the owner choose and approve in the app, then record the link a person posted, the text that went out and the numbers. |
+| [`marketing-karigor-mcp`](marketing-karigor-mcp/) | Marketing Karigor from your own AI | Ask for a week plan or a day plan, let the owner keep or drop lines and approve in the app, hand kept lines to Content Karigor, and read the weekly report, with the credit cost of each step. |
+| [`meeting-karigor-mcp`](meeting-karigor-mcp/) | Meeting Karigor from your own AI | Guide a person from a meeting to its record: plan, record or upload, analysis, action items and minutes in the app, and use Meeting Karigor's tools over MCP only when they are in the tool list. |
 
 ## How each skill is built
 
