@@ -258,7 +258,7 @@ This skill covers Marketing Karigor plans. For a meeting brief, use meeting-kari
 
 ## 15. The draft is refused after the item is made (Bangla)
 
-*(Rina has 1 credit left. This week's plan is as in the fixture.)*
+*(Rina's organization has 0 credits. This week's plan is as in the fixture.)*
 
 **Rina:** l1 কনটেন্ট কারিগরে দিয়ে দিন, ড্রাফটসহ।
 

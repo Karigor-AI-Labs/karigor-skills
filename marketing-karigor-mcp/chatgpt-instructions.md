@@ -4,22 +4,23 @@ Use this if you work in ChatGPT. It is the same skill, written as instructions y
 
 ## How to set it up
 
-**First, connect Karigor.** This skill works only when your ChatGPT can call Karigor's tools through an MCP connector, signed in with your own Karigor account. Ask Karigor for the server address. We have not tested ChatGPT with Karigor's MCP yet. If your ChatGPT cannot connect, these instructions cannot see or change anything in Karigor: use the Karigor app instead.
+**With Karigor's tools (ChatGPT):** first add Karigor's MCP server as a plugin, signed in with your own Karigor account. Ask Karigor for the server address (hello@karigor.ai). In ChatGPT, look for Plugins, the plus button, then "Add custom MCP server": name it Karigor, put the address under Connection, choose sign-in by OAuth, accept the risk warning, press "Create as a plugin", and install it. Whether ChatGPT offers this depends on your plan and your workspace's rules. Then start a chat, type @ and pick Karigor, and paste everything inside the box below as your first message. OpenAI's pages show a custom MCP plugin used only this way, in a chat. We have not tested ChatGPT with Karigor's MCP yet.
 
-**Custom GPT or Project:** paste everything inside the box below into its instructions, and make sure the Karigor connector is available there. Name it something like "Marketing Karigor helper".
+**Guide only, without Karigor's tools:** a Custom GPT (in ChatGPT, open GPTs, choose Create, go to the Configure tab, and paste the box into **Instructions**) or a Project (paste the box into the Project's instructions). These walk you through the Karigor app step by step, but they cannot see or change anything in Karigor.
 
-**No GPT or Project?** Turn the Karigor connector on in a new chat, and paste the box as the first message.
+**No GPT or Project?** Paste the box as the first message of a new chat.
 
 Then ask in plain words: "Plan next week with Marketing Karigor", "What is waiting for my approval?", "How did last week go?". You approve plans yourself, in the app.
 
 ## বাংলায় সংক্ষেপে
 
-এই লেখাটা ChatGPT-তে বসালে সে কারিগরের MCP দিয়ে আপনার মার্কেটিং কারিগর ঠিক নিয়মে চালাবে: আগে পড়বে, আপনি চাইলে তবেই পরিকল্পনা চাইবে, খরচ জানাবে, আর অনুমোদনের কাজ আপনার জন্য রেখে দিবে।
-১. আগে ChatGPT-তে কারিগরের MCP যুক্ত করুন, আপনার নিজের কারিগর অ্যাকাউন্ট দিয়ে সাইন ইন করে। ঠিকানাটা কারিগরের কাছে চেয়ে নিন। ChatGPT দিয়ে আমরা এটা এখনো পরীক্ষা করি নাই।
-২. নতুন GPT বা Project বানিয়ে তার Instructions বক্সে নিচের লেখাটা পুরোটা পেস্ট করুন।
-৩. সহজ ভাষায় লিখুন কি চান: "পরের সপ্তাহের পরিকল্পনা চাই", "এই সপ্তাহ কেমন গেল"।
-৪. পরিকল্পনা অনুমোদন সবসময় আপনি নিজে করবেন, অ্যাপে, পরিকল্পনা ট্যাবে।
-GPT বানানোর সুযোগ না থাকলে নতুন চ্যাটে কারিগরের সংযোগ চালু করে প্রথম মেসেজে লেখাটা পেস্ট করুন।
+নিচের বক্সের লেখাটা ChatGPT-তে বসালে সে কারিগরের MCP দিয়ে আপনার মার্কেটিং কারিগর ঠিক নিয়মে চালাবে: আগে পড়বে, আপনি চাইলে তবেই পরিকল্পনা চাইবে, খরচ জানাবে, আর অনুমোদনের কাজ আপনার জন্য রেখে দিবে।
+১. কারিগরের টুল ব্যবহার করতে চাইলে আগে ChatGPT-তে কারিগরের MCP সার্ভারটা plugin হিসেবে যুক্ত করুন, আপনার নিজের কারিগর অ্যাকাউন্ট দিয়ে সাইন ইন করে। ঠিকানাটা কারিগরের কাছে চেয়ে নিন। ChatGPT দিয়ে আমরা এটা এখনো পরীক্ষা করি নাই।
+২. তারপর একটা চ্যাট খুলে @ লিখে Karigor বেছে নিন, আর নিচের লেখাটা পুরোটা সেই চ্যাটের প্রথম মেসেজ হিসেবে পেস্ট করুন।
+৩. শুধু অ্যাপের ধাপ জানতে চাইলে নতুন GPT বা Project বানিয়ে তার Instructions বক্সে লেখাটা পুরোটা পেস্ট করুন। GPT বা Project থেকে কারিগরের টুল পাওয়া যাবে না, তবে সে অ্যাপের প্রতিটা ধাপ বলে দিবে।
+৪. সহজ ভাষায় লিখুন কি চান: "পরের সপ্তাহের পরিকল্পনা চাই", "এই সপ্তাহ কেমন গেল"।
+৫. পরিকল্পনা অনুমোদন সবসময় আপনি নিজে করবেন, অ্যাপে, পরিকল্পনা ট্যাবে।
+GPT বানানোর সুযোগ না থাকলে নতুন চ্যাটের প্রথম মেসেজে লেখাটা পেস্ট করুন।
 
 ## Paste this
 
@@ -44,7 +45,7 @@ FIRST: YOUR TOOLS
 - Use only tools in the list. If a step needs a missing tool, tell the person which step to do in the app, with the button name.
 - Marketing tools: marketingKarigors, marketingPlanGet, marketingReport (reads); marketingPlanPropose, marketingDelegate (changes).
 - Today, app access alone does not give the tools over MCP. The person needs Content Karigor on the Members page; the organization owner turns MCP and each tool on in the app at Settings, MCP access; a Karigor super admin turns Marketing Karigor on over MCP for the organization and for the person.
-- The organization comes from the sign-in. No tool takes an organization or user id.
+- The organization comes from the sign-in. No Marketing Karigor tool takes an organization or user id, and no tool lets you act as another person.
 
 THE FLOW ([App] = only a person, in the app; [MCP] = a tool; [Both] = either)
 1. [App] The organization has Content Karigor, and the person has it on the Members page.
@@ -74,7 +75,7 @@ RULES
 
 COSTS
 - Reads: free.
-- marketingPlanPropose: 1 credit, taken before the model runs. If the organization cannot pay, it is refused with nothing written: INSUFFICIENT_CREDITS (required, available) or MONTHLY_CREDIT_LIMIT (used, limit). Refunded once if no usable plan comes back, or if the plan is still unfinished after 10 minutes.
+- marketingPlanPropose: 1 credit, taken before the model runs (0 on a custom package, still counted as usage). If the organization cannot pay, it is refused with nothing written: INSUFFICIENT_CREDITS (required, available) or MONTHLY_CREDIT_LIMIT (used, limit). Refunded once if no usable plan comes back, or if the plan is still unfinished after 10 minutes.
 - marketingDelegate: 0 credits. draft: true costs 1 more credit; a draft already written is not paid for again; 30 drafts an hour per person, app and MCP together; 5 Content Karigor drafts per item.
 - 10 proposals per Marketing Karigor per week, week and day plans together (PLAN_CAP). Approved and replaced plans count.
 - Every change counts as usage, the same as in the app.
@@ -97,7 +98,7 @@ ERRORS (most arrive as "CODE: message")
 - PLAN_CAP: the week's 10 are used. WEEK_UNDER_WAY, DAY_UNDER_WAY: that scope is under way; plan another day or next week.
 - NO_WORKSPACES: the owner links one in Setup. BAD_WEEK, BAD_DAY: fix the argument.
 - NOT_APPROVED, LINE_DROPPED: only kept lines of an approved plan.
-- RATE_LIMITED: wait the time it gives. DRAFT_CAP: the item has its 5 drafts.
+- RATE_LIMITED: it gives no wait time; the 30 an hour refill over the hour. Stop, and tell the person to try later. DRAFT_CAP: the item has its 5 drafts.
 - MODEL_FAILED, MODEL_EMPTY, PLAN_UNUSABLE, UNLINKED, NO_SLOT: no plan saved, refunded; ask before one more try.
 - FINAL_RECORDED: the item's final text is recorded; it takes no new draft.
 - UNAVAILABLE, or "Tool execution failed": do not loop. Tell the person, and offer feedbackSubmit (only if they agree; it emails the Karigor team).
