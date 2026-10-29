@@ -2,6 +2,14 @@
 
 All notable changes to Karigor Skills. Dates are in Dhaka time.
 
+## 1.5.1 (29 October 2026)
+
+- `meeting-karigor-mcp` fits the Agent Skills limit again. Its description was 1,032 characters, over the 1,024 the format allows, so an upload could refuse it. It is now 999 characters; the only words taken out are the list of assistants in brackets.
+- New `phone-setup-prompt.md` in `meeting-karigor-mcp`, in English and in Bangla: a short prompt for the Claude app on a phone. It checks whether the Karigor connector and the skill are already in the chat, says exactly what to tap for anything missing (the connector at Settings, Connectors, "+", Add custom connector; the skill as one ZIP from this release, uploaded at Customize, Skills), and never says it can add either one itself. Then it calls `myAccess`, says what the person can use, and offers the two workflows: plan a meeting, or analyse one afterwards. The skill points a phone user to it.
+- `setup-prompt.md` says plainly who does what: the person taps every button, link and sign-in; their AI guides, checks with `myAccess` and reads. Each step names who acts. The Claude path downloads one file, `meeting-karigor-mcp.zip`, from the v1.5.1 release, and adds the phone steps for the connector and for code execution. Anthropic documents the Skills page on claude.ai and in the desktop app, so a phone app without it does that one step there; the skill then works in phone chats too.
+- New `scripts/build-zips.mjs`: one ZIP per skill, holding the skill folder itself at the top, the shape Claude's upload looks for. It checks every SKILL.md first (name, folder, reserved words, a description of at most 1,024 characters with no XML tags) and writes nothing if one fails. No dependencies, and the same files give the same bytes. It also notes every description over 200 characters, because one claude.ai help page gives that lower limit; all six skills are over it today.
+- The library README says how to install a skill from a phone with that one file, and how to build the ZIPs.
+
 ## 1.5.0 (29 October 2026)
 
 - `meeting-karigor-mcp` now matches what Meeting Karigor's MCP server offers today. Version 1.4.0 said that members reach no Meeting Karigor tool and that the brief tools were not live; both are no longer true. A member's AI can now use Meeting Karigor's tools once five things hold: the organization's owner has turned MCP and each tool on at Settings, MCP access; a Karigor super admin has turned Meeting Karigor on for MCP in the organization and given that person MCP access to it; and the person can use Meeting Karigor in the app.

@@ -20,7 +20,7 @@ These need a Karigor account and an AI assistant connected to Karigor's MCP serv
 |---|---|---|
 | [`content-karigor-mcp`](content-karigor-mcp/) | Content Karigor from your own AI | Plan a post with a brief that holds every fact, get Content Karigor's draft and your own, let the owner choose and approve in the app, then record the link a person posted, the text that went out and the numbers. |
 | [`marketing-karigor-mcp`](marketing-karigor-mcp/) | Marketing Karigor from your own AI | Ask for a week plan or a day plan, let the owner keep or drop lines and approve in the app, hand kept lines to Content Karigor, and read the weekly report, with the credit cost of each step. |
-| [`meeting-karigor-mcp`](meeting-karigor-mcp/) | Meeting Karigor from your own AI | Plan a meeting as a brief from your AI, start and record it in the app, then read its record from your AI and get the decisions, action items with owners, open questions and a follow-up draft you send yourself. Comes with `setup-prompt.md`, a prompt that walks a new user's AI through connecting Karigor and installing the skill. |
+| [`meeting-karigor-mcp`](meeting-karigor-mcp/) | Meeting Karigor from your own AI | Plan a meeting as a brief from your AI, start and record it in the app, then read its record from your AI and get the decisions, action items with owners, open questions and a follow-up draft you send yourself. Comes with `setup-prompt.md`, a prompt that walks a new user's AI through connecting Karigor and installing the skill, and `phone-setup-prompt.md`, a shorter one for Claude on a phone. |
 
 ## How each skill is built
 
@@ -36,11 +36,13 @@ These need a Karigor account and an AI assistant connected to Karigor's MCP serv
 - `examples.md`: the test suite. If the assistant's answers meet every "Must" and "Must not" line, the skill is working.
 - `README.md`: who it is for and how to start.
 - `setup-prompt.md` (in `meeting-karigor-mcp`): a prompt, in English and in Bangla, that a new user pastes into their own AI to connect Karigor's MCP server and install the skill, step by step.
+- `phone-setup-prompt.md` (in `meeting-karigor-mcp`): the short version for the Claude app on a phone, in English and in Bangla. It checks whether Karigor and the skill are already there, says what to tap for anything missing, checks access with `myAccess`, and offers to plan a meeting or analyse one.
 
 ## How to use a skill
 
 - **Claude Code:** copy the skill folder to `~/.claude/skills/<skill-name>/`.
-- **Claude apps:** zip the skill folder and upload it at Customize, Skills.
+- **Claude apps:** upload the skill's ZIP at Customize, Skills: press "+", then "+ Create skill", then "Upload a skill". The ZIP must hold the skill folder itself, not just its files. `node scripts/build-zips.mjs` builds one ZIP per skill into `dist/` (Node 18 or later, nothing to install) and stops if a skill breaks the Agent Skills rules.
+- **Claude on a phone, with one file:** download the skill's ZIP from this repository's release, for example `meeting-karigor-mcp.zip`, and upload that one file at Customize, Skills as above. Anthropic documents that page on claude.ai and in the desktop app; if your phone app does not show it, do this one step there. A skill on your account then works in your phone chats too.
 - **ChatGPT:** open the skill's `chatgpt-instructions.md` and follow the steps there.
 - **Gemini:** create a Gem and paste the box from `chatgpt-instructions.md` into its instructions.
 - **Codex and other Agent Skills tools:** copy the folder to `~/.agents/skills/` (for all your projects) or `.agents/skills/` inside one project.
