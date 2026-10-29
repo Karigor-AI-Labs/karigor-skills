@@ -20,7 +20,7 @@ These need a Karigor account and an AI assistant connected to Karigor's MCP serv
 |---|---|---|
 | [`content-karigor-mcp`](content-karigor-mcp/) | Content Karigor from your own AI | Plan a post with a brief that holds every fact, get Content Karigor's draft and your own, let the owner choose and approve in the app, then record the link a person posted, the text that went out and the numbers. |
 | [`marketing-karigor-mcp`](marketing-karigor-mcp/) | Marketing Karigor from your own AI | Ask for a week plan or a day plan, let the owner keep or drop lines and approve in the app, hand kept lines to Content Karigor, and read the weekly report, with the credit cost of each step. |
-| [`meeting-karigor-mcp`](meeting-karigor-mcp/) | Meeting Karigor from your own AI | Guide a person from a meeting to its record: plan, record or upload, analysis, action items and minutes in the app, and use Meeting Karigor's tools over MCP only when they are in the tool list. |
+| [`meeting-karigor-mcp`](meeting-karigor-mcp/) | Meeting Karigor from your own AI | Plan a meeting as a brief from your AI, start and record it in the app, then read its record from your AI and get the decisions, action items with owners, open questions and a follow-up draft you send yourself. Comes with `setup-prompt.md`, a prompt that walks a new user's AI through connecting Karigor and installing the skill. |
 
 ## How each skill is built
 
@@ -35,11 +35,12 @@ These need a Karigor account and an AI assistant connected to Karigor's MCP serv
 - `chatgpt-instructions.md`: the same skill as instructions you paste into a ChatGPT Custom GPT, a Project, or a new chat. Includes a short guide in Bangla.
 - `examples.md`: the test suite. If the assistant's answers meet every "Must" and "Must not" line, the skill is working.
 - `README.md`: who it is for and how to start.
+- `setup-prompt.md` (in `meeting-karigor-mcp`): a prompt, in English and in Bangla, that a new user pastes into their own AI to connect Karigor's MCP server and install the skill, step by step.
 
 ## How to use a skill
 
 - **Claude Code:** copy the skill folder to `~/.claude/skills/<skill-name>/`.
-- **Claude apps:** zip the skill folder and upload it under Skills in settings.
+- **Claude apps:** zip the skill folder and upload it at Customize, Skills.
 - **ChatGPT:** open the skill's `chatgpt-instructions.md` and follow the steps there.
 - **Gemini:** create a Gem and paste the box from `chatgpt-instructions.md` into its instructions.
 - **Codex and other Agent Skills tools:** copy the folder to `~/.agents/skills/` (for all your projects) or `.agents/skills/` inside one project.

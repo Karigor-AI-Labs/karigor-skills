@@ -2,6 +2,16 @@
 
 All notable changes to Karigor Skills. Dates are in Dhaka time.
 
+## 1.5.0 (29 October 2026)
+
+- `meeting-karigor-mcp` now matches what Meeting Karigor's MCP server offers today. Version 1.4.0 said that members reach no Meeting Karigor tool and that the brief tools were not live; both are no longer true. A member's AI can now use Meeting Karigor's tools once five things hold: the organization's owner has turned MCP and each tool on at Settings, MCP access; a Karigor super admin has turned Meeting Karigor on for MCP in the organization and given that person MCP access to it; and the person can use Meeting Karigor in the app.
+- The skill names the eight Meeting Karigor tools: `meetingBriefs`, `meetingBriefGet`, `meetingBriefCreate`, `meetingBriefUpdate` and `meetingBriefArchive` to plan, and `meetingList`, `meetingRecord` and `meetingTranscript` to read a meeting afterwards. `meetingTranscript` has its own switch, which the owner turns on by itself.
+- Two new procedures, done from the user's own AI: plan a meeting (a brief whose agenda parses into items, then the user's own `New meeting` and Record in the app), and read a meeting's record and analyse it (decisions, action items with owners, open questions, and a follow-up draft the user sends). Recording, uploading, `Run`, ticking items, `Minutes PDF` and `Send minutes` stay in the app, and so does Meeting Karigor's own analysis.
+- Step 0 reads `myAccess` and says who turns on each switch: the organization owner, or a Karigor super admin. The memory tools stay for Karigor operator accounts only. The trial's limits are stated, including that minutes by email are off in the trial.
+- New `setup-prompt.md`, in English and in Bangla: the prompt a person pastes into their AI after accepting a Karigor invite. It guides them to connect Karigor's MCP server with their own sign-in, install the skill, reconnect and call `myAccess`, and it tells the AI never to change a setting.
+- The test suite has 18 cases, with new ones for planning, post-meeting analysis, a record that is not ready, a record cut to fit, a missing-tool refusal and an instruction hidden inside a meeting record. The ChatGPT box is under 8,000 characters.
+- The library README says where Claude apps take an uploaded skill (Customize, Skills).
+
 ## 1.4.0 (28 October 2026)
 
 - Three new skills for using Karigor's own karigors through Karigor's MCP server: `content-karigor-mcp`, `marketing-karigor-mcp` and `meeting-karigor-mcp`. Each was written from the live tool descriptions and the product code, then checked claim by claim by a second reviewer against the same sources.
