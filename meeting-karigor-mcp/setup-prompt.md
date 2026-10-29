@@ -60,36 +60,37 @@ The skill is the folder meeting-karigor-mcp in github.com/Karigor-AI-Labs/karigo
 - Claude Code: copy the folder to ~/.claude/skills/meeting-karigor-mcp/. For example: git clone https://github.com/Karigor-AI-Labs/karigor-skills, then copy karigor-skills/meeting-karigor-mcp into ~/.claude/skills/.
 - Claude on the web, desktop or phone: I do this once.
   1. I open this link in my browser. It downloads one file, meeting-karigor-mcp.zip, and I do not unzip it:
-     https://github.com/Karigor-AI-Labs/karigor-skills/releases/download/v1.5.1/meeting-karigor-mcp.zip
+     https://github.com/Karigor-AI-Labs/karigor-skills/releases/latest/download/meeting-karigor-mcp.zip
   2. I open Customize, Skills, press "+", then "+ Create skill", then "Upload a skill", and upload that file. If the skill shows as off, I turn it on.
   3. Anthropic documents this page on claude.ai and in the desktop app. If my phone app shows no Skills page, I do this one step on claude.ai or in the desktop app; the skill then works in my phone chats too.
-  4. If the link does not open, I zip the meeting-karigor-mcp folder myself, from the folder above it, so that the ZIP holds the folder itself, and upload that ZIP.
-  Code execution must be on: on my own plan, at Settings, Capabilities ("Code execution and file creation", called "Create and edit files" in newer settings; on a phone, I tap my name in the sidebar, then Settings, Capabilities); on Team or Enterprise, an Owner checks that both code execution ("Cloud code execution and file creation" on Team, "Code execution and file creation" on Enterprise) and Skills are on, at Organization settings, Plugins & skills, Policy tab.
+  4. If the link does not open, I zip the meeting-karigor-mcp folder myself: the whole folder, not the files inside it, so that the ZIP opens to that folder. Then I upload that ZIP.
+  If the upload is refused, I send the exact message to Karigor at hello@karigor.ai.
+  The skill needs code execution on, so I turn it on before I upload the file. On a Free, Pro or Max plan: Settings, Capabilities ("Code execution and file creation", called "Create and edit files" in newer settings; on a phone, I tap my name in the sidebar, then Settings, Capabilities). On Team or Enterprise, an Owner checks that both code execution ("Cloud code execution and file creation" on Team, "Code execution and file creation" on Enterprise) and Skills are on. Anthropic's pages name two places for this, the Policy tab at Organization settings, Plugins & skills, and Organization settings, Capabilities, so the Owner looks in both.
 - Codex: copy the folder to ~/.agents/skills/meeting-karigor-mcp/.
 - Gemini CLI: copy the folder to ~/.gemini/skills/meeting-karigor-mcp/ (or ~/.agents/skills/meeting-karigor-mcp/).
 - ChatGPT and the Gemini app: open chatgpt-instructions.md in that folder. With Karigor connected in ChatGPT, start a chat, pick Karigor with @, and paste that file's box (not this setup prompt) as the first message. A Custom GPT, a Project or a Gem with the box in its instructions only guides me through the app: it does not reach Karigor's tools.
 
 STEP 3: RECONNECT, THEN CHECK MY ACCESS (I reconnect; you call myAccess)
 Your tool list is read when you connect, and it does not refresh by itself. Ask me to reconnect Karigor (in Claude Code, open /mcp, pick Karigor, then Reconnect; in ChatGPT, refresh the Karigor plugin on its details page), or to start a new chat. Do not add Karigor a second time. Then call myAccess. It changes nothing and costs nothing.
-In ChatGPT, this chat has no Karigor tools unless I picked Karigor in it. Ask me to open a new chat (a Work chat if ChatGPT shows the tabs), type @, pick Karigor, paste the box from step 2, and ask there for myAccess; the rest of step 3 and step 4 happen in that chat. A chat where Karigor was not picked has no Karigor tools, and that says nothing about my organization's switches.
+In ChatGPT, this chat has no Karigor tools unless I picked Karigor in it. Ask me to open a new chat (a Work chat if ChatGPT shows the tabs), type @, pick Karigor, paste the box from chatgpt-instructions.md, and ask there for myAccess; the rest of step 3 and step 4 happen in that chat. A chat where Karigor was not picked has no Karigor tools, and that says nothing about my organization's switches.
 Tell me in plain words:
 - principalType should be "member", and Meeting Karigor's status should be "on".
 - canUse is what I can use now.
-If something is missing, first compare canUse with your tool list. Your tool list was read when I connected; myAccess is read now. If canUse names a tool your list lacks, nothing is off: ask me to reconnect. In ChatGPT, a tool that canUse names and ChatGPT still does not offer after a refresh is a ChatGPT limit (my plan, my workspace's rules or the plugin's own tool switches), not a Karigor switch. Say a switch is off only when myAccess or a refused call says so: then tell me which switch it is and who turns it on, and quote Karigor's own sentence word for word.
-- No Karigor tools at all, or no myAccess: in ChatGPT, first check that I picked Karigor with @ in this chat. If I did, MCP or the tools are not on in my organization yet, or I connected before they were. My organization's owner turns MCP and each tool on in the Karigor app at Settings, MCP access. Or my account is not in the organization yet: check I accepted the invite and signed in to the Karigor app with that same email. Then I reconnect.
+If something is missing, first compare canUse with your tool list. Your tool list was read when I connected; myAccess is read now. If canUse names a tool your list lacks, nothing is off: ask me to reconnect. In ChatGPT, a tool that canUse names and ChatGPT still does not offer after a refresh is a ChatGPT limit (my plan, my workspace's rules or the plugin's own tool switches), not a Karigor switch. Say a switch is off only when myAccess or a refused call says so: then tell me which switch it is and who turns it on, and quote Karigor's own sentence word for word. Only Meeting Karigor and its tools matter here: another karigor that is not on for me, or another tool under offInYourOrg (feedbackSubmit, for example), can be off on purpose; say so in one line, and send me to no one about it.
+- No Karigor tools at all, or no myAccess: in ChatGPT, first check that I picked Karigor with @ in this chat. If I did, or in another AI, MCP or the tools may not be on in my organization yet, or I connected before they were. My organization's owner turns MCP and each tool on in the Karigor app at Settings, MCP access. Or my account is not in the organization yet: check I accepted the invite and signed in to the Karigor app with that same email. Then I reconnect.
 - Meeting Karigor "is not turned on for MCP in your organization", or "you do not have MCP access to Meeting Karigor": only a Karigor super admin can do this. I ask Karigor at hello@karigor.ai. If I cannot open Meeting Karigor in the app either, that comes first: my organization's owner or an admin adds it to my access, or Karigor if my organization does not have Meeting Karigor.
 - A tool under offInYourOrg, for example meetingTranscript: my organization's owner turns it on at Settings, MCP access.
 - Tools such as listAgents or kbSearch appear: I signed in with a Karigor team account. I sign out and connect again with my own account.
 - "MCP caller has no organization.": my account has not joined my organization yet. I accept the invitation with the email it was sent to.
-Never try to fix a switch yourself, and never retry a refused call in a loop.
+Never try to fix a switch yourself, and never run a refused call again unless I ask you to.
 
 STEP 4: SHOW ME WHAT I CAN DO (you read; I choose)
 Call meetingBriefs and meetingList. Both only read. Then tell me, in a few lines:
-- Before a meeting, I can plan it with you: you write a brief with an agenda (meetingBriefCreate). Starting the meeting stays mine, in the app: New meeting, check the brief, then Record.
+- Before a meeting, I can plan it with you: you write a brief with an agenda, show it to me, and save it with meetingBriefCreate only when I say yes. A saved brief does not schedule the meeting or invite anyone. Starting the meeting stays mine, in the app: New meeting, check the brief, then Record. Before I press Record, remind me to tell everyone in the meeting that it is being recorded.
 - After a meeting, you can read its record (meetingRecord), and the transcript if my organization's owner turned meetingTranscript on, and give me the decisions, the action items with owners, the open questions and, when I ask, a follow-up draft that I send myself.
 - These stay in the app, by my own click: Record, Upload & analyse, Run, ticking items, Minutes PDF and Send minutes. Meeting Karigor's own analysis runs in the app.
 
-Answer in the language I write in. If I write in Bangla, answer in Bangladeshi Bangla: keep button, tab and tool names in English, as the app shows them, and write every other word in Bangla.
+Answer in the language I write in. If I write in Bangla, answer in Bangladeshi Bangla: keep button, tab, menu and tool names, and words such as connector, skill and owner, in English, as the app shows them; write the rest in Bangla.
 In Bangla: -টা, never -টি; কি not কী; নাই not নেই; হল not হলো; always আপনি; short sentences, ordinary words.
 ```
 
@@ -99,7 +100,7 @@ In Bangla: -টা, never -টি; কি not কী; নাই not নেই; �
 
 **শুরু করার আগে:**
 - যে ইমেইলে আমন্ত্রণ এসেছে, সেই ইমেইল দিয়ে একবার Karigor অ্যাপে সাইন ইন করুন।
-- আপনার অ্যাক্সেস চালু করার কাজটা আপনার প্রতিষ্ঠানের owner আর Karigor-এর। কিছু চালু না থাকলে আপনার AI বলে দিবে কোনটা বন্ধ, আর কে চালু করবেন। অথবা বলে দিবে কখন শুধু সংযোগটা একবার বন্ধ করে আবার চালু করলেই হবে।
+- আপনার অ্যাক্সেস চালু করার কাজটা আপনার প্রতিষ্ঠানের owner আর Karigor-এর। কিছু চালু না থাকলে আপনার AI বলে দিবে কোনটা বন্ধ, আর কে চালু করবেন। অথবা বলে দিবে যে শুধু সংযোগটা একবার বন্ধ করে আবার চালু করলেই হবে।
 
 **কে কি করবেন:**
 - **চাপবেন আপনি।** প্রতিটা বাটন, প্রতিটা লিংক, প্রতিটা সাইন ইন: Karigor connector যোগ করা, skill আপলোড করা, সংযোগটা আবার চালু করা। আপনার AI আপনার ব্রাউজারে বা সেটিংসে ক্লিক করতে পারে না, আর আপনার অ্যাকাউন্টে কোনো connector বা skill যোগ করতে পারে না।
@@ -122,7 +123,7 @@ In Bangla: -টা, never -টি; কি not কী; নাই not নেই; �
 আপনার জন্য নিয়ম
 - আপনি আমার ব্রাউজারে ক্লিক করতে বা আমার সেটিংস খুলতে পারবেন না। ঠিক কোথায় চাপতে হবে বলে দিন, চাপব আমি।
 - আমি নিজের ব্রাউজারে, নিজের Karigor অ্যাকাউন্টে সাইন ইন করে যুক্ত হব (OAuth)। আমার কাছে কখনো পাসওয়ার্ড, API key বা টোকেন চাইবেন না, আর চ্যাটে বা কোনো কনফিগারেশন ফাইলে কখনো সেগুলা বসাবেন না।
-- Karigor-এর কোনো সেটিং নিজে কখনো বদলাবেন না, কোনো ব্রাউজার টুলকেও বদলাতে বলবেন না। কোন টুল আমি ব্যবহার করতে পারব, সেটা ঠিক করবে মানুষ, কোনো AI না।
+- Karigor-এর কোনো সেটিং নিজে কখনো বদলাবেন না, ব্রাউজার টুল দিয়েও বদলাবেন না। কোন টুল আমি ব্যবহার করতে পারব, সেটা ঠিক করবে মানুষ, কোনো AI না।
 - নিজের অ্যাপের কোনো মেনুর নাম নিশ্চিত না জানলে "খুঁজে দেখুন" বলে বর্ণনা দিন। কোনো বাটনের নাম বানিয়ে বলবেন না।
 - টার্মিনাল অ্যাপে প্রতিটা কমান্ড আগে আমাকে দেখাবেন, আর আমি হ্যাঁ বললে তবেই চালাবেন।
 
@@ -130,7 +131,7 @@ In Bangla: -টা, never -টি; কি not কী; নাই not নেই; �
 সার্ভারের ঠিকানা, হুবহু, শেষে কোনো স্ল্যাশ ছাড়া:
 https://rightful-elk-127.convex.site/mcp
 অ্যাপে যে Karigor অ্যাকাউন্ট ব্যবহার করি, সেটা দিয়েই সাইন ইন করব। এমন ব্রাউজারে করব, যেখানে অন্য কোনো Karigor অ্যাকাউন্ট খোলা নাই।
-- ওয়েব বা ডেস্কটপের Claude, Free, Pro বা Max প্ল্যান: Customize, Connectors খুলে "+ Add", তারপর "Add custom connector" চাপুন। নাম: Karigor। URL: উপরের ঠিকানা। Continue চাপুন। Claude নিজে যে সাইন-ইন সেটিং খুঁজে পায়, সেটা বদলাবেন না। OAuth client-এর জায়গায় "Use Claude's published identity (Recommended)" বেছে নিন। Add চাপুন, তারপর সাইন ইন করতে বললে সাইন ইন করুন। সাইন ইন কাজ না করলে connector-টা সরিয়ে ফেলুন (Remove), তারপর আবার যোগ করুন, এবার OAuth client-এ "Register automatically" বেছে নিন। যে ভুলের বার্তা দেখায়, সেটা হুবহু Karigor-কে পাঠান। চ্যাটে "+" বাটন, তারপর Connectors থেকে connector-টা চালু করুন। Free প্ল্যানে custom connector একটাই রাখা যায়।
+- ওয়েব বা ডেস্কটপের Claude (Free, Pro বা Max প্ল্যান): Customize, Connectors খুলে "+ Add", তারপর "Add custom connector" চাপুন। নাম: Karigor। URL: উপরের ঠিকানা। Continue চাপুন। Claude নিজে যে সাইন-ইন সেটিং খুঁজে পায়, সেটা বদলাবেন না। OAuth client-এর জায়গায় "Use Claude's published identity (Recommended)" রেখে দিন। Add চাপুন, তারপর সাইন ইন করতে বললে সাইন ইন করুন। সাইন ইন কাজ না করলে connector-টা সরিয়ে ফেলুন (Remove), তারপর আবার যোগ করুন, এবার OAuth client-এ "Register automatically" বেছে নিন। যে error বার্তা দেখায়, সেটা হুবহু Karigor-কে পাঠান। চ্যাটে "+" বাটন, তারপর Connectors থেকে connector-টা চালু করুন। Free প্ল্যানে custom connector একটাই রাখা যায়।
 - ফোনের Claude অ্যাপ: Settings, Connectors, "+", Add custom connector। নাম, URL আর সাইন-ইন সেটিং উপরের মতোই। তারপর Add চেপে সাইন ইন করুন। চ্যাটে মেসেজ লেখার ঘরের "+" চাপুন, তারপর Connectors, আর Karigor চালু করুন।
 - Claude Team বা Enterprise প্ল্যান: আগে আমাদের Claude প্রতিষ্ঠানের একজন Owner connector-টা যোগ করবেন, Organization settings-এর Connectors থেকে। তারপর আমি Customize, Connectors খুলে Karigor খুঁজে Connect চাপব।
 - Claude Code: টার্মিনালে চালান
@@ -145,7 +146,7 @@ https://rightful-elk-127.convex.site/mcp
 - Gemini CLI: চালান
   gemini mcp add --transport http --scope user karigor https://rightful-elk-127.convex.site/mcp
   তারপর Gemini CLI-এর ভিতরে লিখুন /mcp auth karigor
-- ওয়েবের ChatGPT: Plugins (chatgpt.com/plugins), প্লাস বাটন, তারপর "Add custom MCP server" খুঁজে দেখুন। নাম দিন Karigor, Connection-এর ঘরে উপরের ঠিকানা বসান, আর সাইন-ইন হিসেবে OAuth বেছে নিন। সতর্কবার্তাটা পড়ে "I understand and want to continue" চাপুন, তারপর "Create as a plugin" চাপুন। এরপর নিজের personal plugins-এর মধ্যে প্লাগইনটা খুঁজে ইনস্টল করুন। ব্যবহার করতে, চ্যাটের লেখার ঘরে @ লিখে Karigor বেছে নিন (Chat আর Work দুইটা ট্যাব থাকলে Work-এর চ্যাটে)। এই অপশনটা আছে কিনা, সেটা আমার প্ল্যান আর ওয়ার্কস্পেসের নিয়মের উপর নির্ভর করে। OpenAI-এর সাহায্য পাতায় বলা আছে, যেসব টুল কিছু বদলায় (যেমন ব্রিফ লেখা), সেগুলার জন্য Business, Enterprise বা Edu ওয়ার্কস্পেস লাগে। না পেলে আমাকে বলুন, আর ধাপ ২-এ চলে যান: তখনো skill-টা আমাকে অ্যাপের প্রতিটা ধাপ বলে দিবে।
+- ওয়েবের ChatGPT: Plugins (chatgpt.com/plugins), "+" বাটন, তারপর "Add custom MCP server" খুঁজে দেখুন। নাম দিন Karigor, Connection-এর ঘরে উপরের ঠিকানা বসান, আর সাইন-ইন হিসেবে OAuth বেছে নিন। সতর্কবার্তাটা পড়ে "I understand and want to continue" চাপুন, তারপর "Create as a plugin" চাপুন। এরপর নিজের personal plugins-এর মধ্যে প্লাগইনটা খুঁজে ইনস্টল করুন। ব্যবহার করতে, চ্যাটের লেখার ঘরে @ লিখে Karigor বেছে নিন (Chat আর Work দুইটা ট্যাব থাকলে Work-এর চ্যাটে)। এই অপশনটা আছে কিনা, সেটা আমার প্ল্যান আর ওয়ার্কস্পেসের নিয়মের উপর নির্ভর করে। OpenAI-এর সাহায্য পাতায় বলা আছে, যেসব টুল কিছু বদলায় (যেমন ব্রিফ লেখা), সেগুলার জন্য Business, Enterprise বা Edu ওয়ার্কস্পেস লাগে। না পেলে আমাকে বলুন, আর ধাপ ২-এ চলে যান: তখনো skill-টা আমাকে অ্যাপের প্রতিটা ধাপ বলে দিবে।
 - ওয়েবের Gemini অ্যাপ: custom MCP server বা connector যোগ করার কোনো জায়গা খুঁজে দেখুন। না থাকলে আমাকে বলুন, আর ধাপ ২-এ চলে যান: তখনো skill-টা আমাকে অ্যাপের প্রতিটা ধাপ বলে দিবে।
 
 ধাপ ২: SKILL ইনস্টল করা (চাপব আমি; আমার অ্যাকাউন্টে আপনি এটা যোগ করতে পারবেন না)
@@ -155,37 +156,38 @@ skill-টা হল meeting-karigor-mcp ফোল্ডারটা, এখা�
   তারপর karigor-skills/meeting-karigor-mcp ফোল্ডারটা কপি করে রাখুন এই ফোল্ডারের ভিতরে: ~/.claude/skills/
 - ওয়েব, ডেস্কটপ বা ফোনের Claude: এটা আমি একবার নিজে করব।
   ১. এই লিংকটা ব্রাউজারে খুলব। এতে meeting-karigor-mcp.zip নামে একটা ফাইল ডাউনলোড হবে। ফাইলটা আনজিপ করব না:
-     https://github.com/Karigor-AI-Labs/karigor-skills/releases/download/v1.5.1/meeting-karigor-mcp.zip
+     https://github.com/Karigor-AI-Labs/karigor-skills/releases/latest/download/meeting-karigor-mcp.zip
   ২. Customize, Skills খুলে "+", তারপর "+ Create skill", তারপর "Upload a skill" চেপে ফাইলটা আপলোড করব। skill-টা বন্ধ দেখালে চালু করব।
-  ৩. Anthropic এই পাতার কথা লিখেছে claude.ai আর ডেস্কটপ অ্যাপের জন্য। আমার ফোনের অ্যাপে Skills পাতা না থাকলে শুধু এই ধাপটা claude.ai-তে বা ডেস্কটপ অ্যাপে করব। তারপর ফোনের চ্যাটেও skill-টা কাজ করবে।
-  ৪. লিংকটা না খুললে meeting-karigor-mcp ফোল্ডারটা নিজে ZIP করব, এর উপরের ফোল্ডার থেকে, যেন ZIP-এর ভিতরে ফোল্ডারটাই থাকে। তারপর সেই ZIP আপলোড করব।
-  এর জন্য Code execution চালু থাকতে হবে। নিজের প্ল্যানে Settings-এর Capabilities-এ "Code execution and file creation" চালু করুন (নতুন সেটিংসে এর নাম "Create and edit files"; ফোনে পাশের মেনুতে নিজের নাম চাপুন, তারপর Settings, Capabilities)। Team বা Enterprise প্ল্যানে একজন Owner দেখে নিবেন যে code execution ("Cloud code execution and file creation" বা "Code execution and file creation") আর Skills দুইটাই চালু আছে। দুইটাই আছে Organization settings-এর Plugins & skills-এ, Policy ট্যাবে।
+  ৩. Anthropic-এর সাহায্য পাতায় এই Skills পাতাটা claude.ai আর ডেস্কটপ অ্যাপের জন্য বলা আছে। আমার ফোনের অ্যাপে Skills পাতা না থাকলে শুধু এই ধাপটা claude.ai-তে বা ডেস্কটপ অ্যাপে করব। তারপর ফোনের চ্যাটেও skill-টা কাজ করবে।
+  ৪. লিংকটা না খুললে meeting-karigor-mcp ফোল্ডারটা নিজে ZIP করব। ফোল্ডারের ভিতরের ফাইলগুলা না, পুরো ফোল্ডারটাই বেছে নিয়ে ZIP করব, যেন ZIP খুললে প্রথমেই ফোল্ডারটা থাকে। তারপর সেই ZIP আপলোড করব।
+  আপলোড না নিলে যে বার্তা দেখায়, সেটা হুবহু Karigor-কে hello@karigor.ai ঠিকানায় পাঠাব।
+  skill কাজ করতে Code execution চালু থাকতে হবে, তাই ফাইলটা আপলোড করার আগেই আমি এটা চালু করে নিব। Free, Pro বা Max প্ল্যানে Settings-এর Capabilities-এ "Code execution and file creation" চালু করব (নতুন সেটিংসে এর নাম "Create and edit files"; ফোনে পাশের মেনুতে নিজের নাম চাপব, তারপর Settings, Capabilities)। Team বা Enterprise প্ল্যানে একজন Owner দেখে নিবেন যে code execution (Team-এ "Cloud code execution and file creation", Enterprise-এ "Code execution and file creation") আর Skills দুইটাই চালু আছে। Anthropic-এর পাতায় এর দুইটা জায়গার কথা আছে: Organization settings-এর Plugins & skills-এ Policy ট্যাব, আর Organization settings-এর Capabilities। Owner দুই জায়গাতেই দেখে নিবেন।
 - Codex: ফোল্ডারটা এই জায়গায় কপি করুন: ~/.agents/skills/meeting-karigor-mcp/
 - Gemini CLI: ফোল্ডারটা এই দুইটার যেকোনো একটায় কপি করুন: ~/.gemini/skills/meeting-karigor-mcp/ অথবা ~/.agents/skills/meeting-karigor-mcp/
 - ChatGPT আর Gemini অ্যাপ: ওই ফোল্ডারের chatgpt-instructions.md ফাইলটা খুলুন। ChatGPT-তে Karigor যুক্ত থাকলে একটা চ্যাট খুলে @ দিয়ে Karigor বেছে নিন। তারপর ওই ফাইলের বক্সের লেখাটা (এই সেটআপের লেখাটা না) সেই চ্যাটের প্রথম মেসেজ হিসেবে পেস্ট করুন। Custom GPT, Project বা Gem-এর instructions-এ বসালে সেটা শুধু অ্যাপের ধাপগুলা বলে দিবে, Karigor-এর টুল পাবে না।
 
 ধাপ ৩: সংযোগটা নতুন করে চালু করা, তারপর আমার অ্যাক্সেস দেখা (সংযোগ চালু করব আমি; myAccess চালাবেন আপনি)
 যুক্ত হওয়ার সময়ই আপনি টুলের তালিকাটা একবার পান, পরে সেটা নিজে থেকে বদলায় না। তাই আমাকে বলুন Karigor-এর সংযোগটা একবার বন্ধ করে আবার চালু করতে (Claude Code-এ /mcp খুলে Karigor বেছে Reconnect; ChatGPT-তে Karigor প্লাগইনের নিজের পাতায় গিয়ে রিফ্রেশ), অথবা নতুন একটা চ্যাট খুলতে। Karigor নতুন করে যোগ করতে হবে না। তারপর myAccess চালান। এটা কিছু বদলায় না, কোনো খরচও নাই।
-ChatGPT-তে এই চ্যাটে Karigor বেছে না নিলে এখানে Karigor-এর কোনো টুল থাকে না। তাই আমাকে বলুন একটা নতুন চ্যাট খুলতে (Chat আর Work দুইটা ট্যাব থাকলে Work-এর চ্যাট), @ লিখে Karigor বেছে নিতে, ধাপ ২-এর বক্সের লেখাটা পেস্ট করতে, আর সেখানেই myAccess চাইতে। ধাপ ৩-এর বাকিটা আর ধাপ ৪ সেই চ্যাটেই হবে। যে চ্যাটে Karigor বেছে নেওয়া হয় নাই, সেখানে Karigor-এর টুল থাকে না, আর তাতে আমার প্রতিষ্ঠানের সুইচগুলা নিয়ে কিছুই বোঝা যায় না।
+ChatGPT-তে এই চ্যাটে Karigor বেছে না নিলে এখানে Karigor-এর কোনো টুল থাকে না। তাই আমাকে বলুন একটা নতুন চ্যাট খুলতে (Chat আর Work দুইটা ট্যাব থাকলে Work-এর চ্যাট), @ লিখে Karigor বেছে নিতে, chatgpt-instructions.md ফাইলের বক্সের লেখাটা পেস্ট করতে, আর সেখানেই myAccess চাইতে। ধাপ ৩-এর বাকিটা আর ধাপ ৪ সেই চ্যাটেই হবে। যে চ্যাটে Karigor বেছে নেওয়া হয় নাই, সেখানে Karigor-এর টুল থাকে না, আর তাতে আমার প্রতিষ্ঠানের সুইচগুলা নিয়ে কিছুই বোঝা যায় না।
 সহজ ভাষায় আমাকে বলুন:
 - principalType-এ থাকবে "member", আর Meeting Karigor-এর status-এ থাকবে "on"।
 - canUse-এ থাকে সেই টুলগুলা, যেগুলা আমি এখনই ব্যবহার করতে পারি।
-কিছু না থাকলে আগে canUse আর আপনার টুলের তালিকা মিলিয়ে দেখুন। টুলের তালিকাটা আপনি পেয়েছেন আমি যুক্ত হওয়ার সময়, আর myAccess দেখায় এই মুহূর্তের অবস্থা। canUse-এ এমন কোনো টুল থাকলে যেটা আপনার তালিকায় নাই, তাহলে কিছুই বন্ধ নাই: আমাকে সংযোগটা একবার বন্ধ করে আবার চালু করতে বলুন। ChatGPT-তে রিফ্রেশ করার পরও canUse-এর কোনো টুল ChatGPT না দেখালে সেটা ChatGPT-এর সীমা (আমার প্ল্যান, ওয়ার্কস্পেসের নিয়ম, বা প্লাগইনের নিজের টুল সুইচ), Karigor-এর কোনো সুইচ না। কোনো সুইচ বন্ধ, এটা বলবেন শুধু তখন, যখন myAccess বা Karigor-এর ফিরিয়ে দেওয়া কোনো কল সেটা বলে। তখন বলুন কোন সুইচ, আর কে চালু করবেন। Karigor-এর নিজের বাক্যটা হুবহু তুলে দিন।
-- Karigor-এর কোনো টুলই নাই, বা myAccess নাই: ChatGPT-তে আগে দেখুন, এই চ্যাটে @ দিয়ে Karigor বেছে নিয়েছি কিনা। বেছে নিয়ে থাকলে কারণ হতে পারে: আমার প্রতিষ্ঠানে MCP বা টুলগুলা এখনো চালু হয় নাই, অথবা চালু হওয়ার আগেই আমি যুক্ত হয়েছি। MCP আর প্রতিটা টুল চালু করবেন আমার প্রতিষ্ঠানের owner, Karigor অ্যাপে Settings-এর MCP access পাতা থেকে। আরেকটা কারণ হতে পারে, আমার অ্যাকাউন্ট এখনো প্রতিষ্ঠানে যোগ হয় নাই: দেখে নিব আমন্ত্রণের লিংক খুলে সাইন আপ করেছি কিনা, আর সেই একই ইমেইল দিয়ে Karigor অ্যাপে সাইন ইন করেছি কিনা। তারপর আমি Karigor-এর সংযোগটা একবার বন্ধ করে আবার চালু করব।
-- Meeting Karigor "is not turned on for MCP in your organization", অথবা "you do not have MCP access to Meeting Karigor": এটা শুধু Karigor-এর একজন super admin করতে পারেন। আমি Karigor-কে এই ঠিকানায় জানাব: hello@karigor.ai
+কোনো টুল বাদ পড়লে আগে canUse আর আপনার টুলের তালিকা মিলিয়ে দেখুন। টুলের তালিকাটা আপনি পেয়েছেন আমি যুক্ত হওয়ার সময়, আর myAccess দেখায় এই মুহূর্তের অবস্থা। canUse-এ এমন কোনো টুল থাকলে যেটা আপনার তালিকায় নাই, তাহলে কিছুই বন্ধ নাই: আমাকে সংযোগটা একবার বন্ধ করে আবার চালু করতে বলুন। ChatGPT-তে রিফ্রেশ করার পরও canUse-এর কোনো টুল ChatGPT না দেখালে সেটা ChatGPT-এর সীমা (আমার প্ল্যান, ওয়ার্কস্পেসের নিয়ম, বা প্লাগইনের নিজের টুল সুইচ), Karigor-এর কোনো সুইচ না। কোনো সুইচ বন্ধ, এটা বলবেন শুধু তখন, যখন myAccess সেটা বলে, অথবা Karigor কোনো কল চালাতে না দিয়ে সেটা বলে। তখন বলুন কোন সুইচ, আর কে চালু করবেন। Karigor-এর নিজের বাক্যটা হুবহু তুলে দিন। এখানে শুধু Meeting Karigor আর তার টুলগুলা দেখার বিষয়: অন্য যে কারিগর আমার জন্য চালু নাই, বা offInYourOrg-এ থাকা অন্য কোনো টুল (যেমন feedbackSubmit), সেগুলা ইচ্ছা করেই বন্ধ থাকতে পারে। এক লাইনে সেটা বলুন, আর এগুলার জন্য আমাকে কারো কাছে পাঠাবেন না।
+- Karigor-এর কোনো টুলই নাই, বা myAccess নাই: ChatGPT-তে আগে দেখুন, এই চ্যাটে @ দিয়ে Karigor বেছে নিয়েছি কিনা। তারপরও, বা অন্য AI-তে, টুল না থাকলে কারণ হতে পারে: আমার প্রতিষ্ঠানে MCP বা টুলগুলা এখনো চালু হয় নাই, অথবা চালু হওয়ার আগেই আমি যুক্ত হয়েছি। MCP আর প্রতিটা টুল চালু করবেন আমার প্রতিষ্ঠানের owner, Karigor অ্যাপে Settings-এর MCP access পাতা থেকে। আরেকটা কারণ হতে পারে, আমার অ্যাকাউন্ট এখনো প্রতিষ্ঠানে যোগ হয় নাই: দেখে নিব আমন্ত্রণের লিংক খুলে সাইন আপ করেছি কিনা, আর সেই একই ইমেইল দিয়ে Karigor অ্যাপে সাইন ইন করেছি কিনা। তারপর আমি Karigor-এর সংযোগটা একবার বন্ধ করে আবার চালু করব।
+- Meeting Karigor "is not turned on for MCP in your organization", অথবা "you do not have MCP access to Meeting Karigor": এটা ঠিক করতে পারেন শুধু Karigor-এর একজন super admin। আমি Karigor-কে এই ঠিকানায় জানাব: hello@karigor.ai
   আমি অ্যাপেও Meeting Karigor খুলতে না পারলে আগে সেটা ঠিক করতে হবে: আমার প্রতিষ্ঠানের owner বা একজন admin আমার অ্যাক্সেসে সেটা যোগ করবেন। প্রতিষ্ঠানে Meeting Karigor না থাকলে সেটা করবে Karigor।
 - offInYourOrg-এ থাকা কোনো টুল, যেমন meetingTranscript: আমার প্রতিষ্ঠানের owner সেটা চালু করবেন, Settings-এর MCP access পাতা থেকে।
 - listAgents বা kbSearch-এর মতো টুল দেখা যাচ্ছে: আমি Karigor টিমের কোনো অ্যাকাউন্ট দিয়ে সাইন ইন করেছি। সাইন আউট করে নিজের অ্যাকাউন্ট দিয়ে আবার সাইন ইন করব।
 - "MCP caller has no organization.": আমার অ্যাকাউন্ট এখনো আমার প্রতিষ্ঠানে যোগ হয় নাই। যে ইমেইলে আমন্ত্রণ এসেছে, সেই ইমেইল দিয়ে আমন্ত্রণের লিংকটা খুলে সাইন আপ করব।
-কোনো সুইচ নিজে ঠিক করার চেষ্টা করবেন না। Karigor যে কল ফিরিয়ে দিয়েছে, আমাকে না জিজ্ঞেস করে সেটা আবার চালাবেন না।
+কোনো সুইচ নিজে ঠিক করার চেষ্টা করবেন না। Karigor যে কল চালাতে দেয় নাই, আমি না বললে সেটা আবার চালাবেন না।
 
 ধাপ ৪: আমি কি কি করতে পারি, দেখান (পড়বেন আপনি; বেছে নিব আমি)
-meetingBriefs আর meetingList চালান। দুইটাই শুধু দেখে, কিছু বদলায় না। তারপর অল্প কয়েক লাইনে বলুন:
-- মিটিংয়ের আগে আপনার সাথে বসে পরিকল্পনা করতে পারি: আপনি এজেন্ডাসহ একটা ব্রিফ লিখে দিবেন (meetingBriefCreate)। মিটিং শুরু করব আমি নিজে, অ্যাপ থেকে: New meeting চাপব, ব্রিফটা ঠিক আছে কিনা দেখব, তারপর Record চাপব।
+meetingBriefs আর meetingList চালান। দুইটাই শুধু পড়ে, কিছু বদলায় না। তারপর অল্প কয়েক লাইনে বলুন:
+- মিটিংয়ের আগে আপনার সাথে বসে পরিকল্পনা করতে পারি: আপনি এজেন্ডাসহ একটা ব্রিফ লিখে আমাকে দেখাবেন, আর আমি হ্যাঁ বললে তবেই meetingBriefCreate দিয়ে সেভ করবেন। ব্রিফ সেভ করলে মিটিংয়ের সময় ঠিক হয় না, কাউকে আমন্ত্রণও যায় না। মিটিং শুরু করব আমি নিজে, অ্যাপ থেকে: New meeting চাপব, ব্রিফটা ঠিক আছে কিনা দেখব, তারপর Record চাপব। Record চাপার আগে আমাকে মনে করিয়ে দিন, মিটিংয়ের সবাইকে যেন জানিয়ে দিই যে মিটিংটা রেকর্ড হচ্ছে।
 - মিটিংয়ের পরে আপনি তার রেকর্ড পড়তে পারবেন (meetingRecord)। আমার প্রতিষ্ঠানের owner meetingTranscript চালু করে থাকলে ট্রান্সক্রিপ্টও পড়তে পারবেন। তারপর আমাকে দিবেন: কি কি সিদ্ধান্ত হল, কে কোন কাজ করবেন, কোন প্রশ্নের উত্তর এখনো বাকি, আর আমি চাইলে একটা ফলো-আপের খসড়া, যেটা আমি নিজে পাঠাব।
 - এই বাটনগুলা অ্যাপে আমি নিজে চাপব: Record, Upload & analyse, Run, Minutes PDF আর Send minutes। আইটেমে টিকও আমি নিজে দিব। Meeting Karigor-এর নিজের বিশ্লেষণ চলে অ্যাপে।
 
-আমি যে ভাষায় লিখি, সেই ভাষায় উত্তর দিন। বাংলায় লিখলে বাংলাদেশের বাংলায় উত্তর দিন। বাটন, ট্যাব আর টুলের নাম অ্যাপে যেমন আছে তেমন ইংরেজিতে রাখুন, বাকি সব শব্দ বাংলায় লিখুন।
+আমি যে ভাষায় লিখি, সেই ভাষায় উত্তর দিন। বাংলায় লিখলে বাংলাদেশের বাংলায় উত্তর দিন। বাটন, ট্যাব, মেনু আর টুলের নাম, আর connector, skill, owner-এর মতো শব্দ অ্যাপে যেমন আছে তেমন ইংরেজিতে রাখুন; বাকিটা বাংলায় লিখুন।
 বাংলায় লিখলে -টি না, -টা লিখবেন (একটা, ব্রিফটা); কী না, কি; নেই না, নাই; হলো না, হল; আর সবসময় আপনি। ছোট বাক্যে, সহজ কথায় লিখবেন।
 ```
 

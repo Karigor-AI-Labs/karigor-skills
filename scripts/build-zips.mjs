@@ -8,7 +8,9 @@
 // folder's other files), the shape Claude's skill upload looks for. A SKILL.md at the root
 // of a ZIP is not recognised as a skill.
 //
-// Before writing anything, every SKILL.md is checked against the Agent Skills rules:
+// Before writing anything, every SKILL.md is checked. Its front matter must be YAML in the
+// small, strict form this script reads (see frontMatter below): anything else is an error,
+// so an upload never meets a front matter a YAML parser refuses. Then the Agent Skills rules:
 // the name is lowercase letters, numbers and hyphens, at most 64 characters, matches its
 // folder and contains neither "anthropic" nor "claude"; the description is not empty, has
 // at most 1,024 characters and no XML tags. One broken skill stops the whole build.
@@ -49,41 +51,114 @@ function skillFolders() {
     .sort();
 }
 
-/** The YAML front matter of a SKILL.md: simple `key: value` lines, plus folded (>) or literal (|) blocks. */
+/**
+ * The YAML front matter of a SKILL.md, read strictly. Only a small part of YAML is accepted:
+ * one `key: value` per line, where the value is a plain scalar on one line, a single- or
+ * double-quoted scalar on one line, a folded (>) or literal (|) block, or nothing, followed by
+ * an indented block (as for `metadata:`). Anything else is an error, never a silent guess, so a
+ * front matter this script accepts is one a YAML parser reads the same way. For example, an
+ * unquoted description holding ": " is refused here, as YAML parsers refuse it
+ * ("mapping values are not allowed").
+ */
 function frontMatter(text) {
   const normalised = text.replace(/\r\n/g, '\n');
-  if (!normalised.startsWith('---\n')) return null;
+  if (!normalised.startsWith('---\n')) return { fields: null, errors: ['SKILL.md does not start with a front matter block between two --- lines'] };
   const end = normalised.indexOf('\n---', 4);
-  if (end === -1) return null;
+  if (end === -1) return { fields: null, errors: ['the front matter block has no closing --- line'] };
   const lines = normalised.slice(4, end).split('\n');
   const fields = {};
+  const errors = [];
+  const at = (i) => `front matter line ${i + 2}`;
   for (let i = 0; i < lines.length; i++) {
-    const m = lines[i].match(/^([A-Za-z0-9_-]+):\s*(.*)$/);
-    if (!m) continue;
-    let value = m[2].trim();
-    if (value === '>' || value === '|' || value === '>-' || value === '|-') {
-      const block = [];
-      while (i + 1 < lines.length && (/^\s+\S/.test(lines[i + 1]) || lines[i + 1].trim() === '')) {
-        block.push(lines[++i].trim());
-      }
-      value = value.startsWith('>') ? block.join(' ').replace(/\s+/g, ' ').trim() : block.join('\n').trim();
-    } else if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
-      value = value.slice(1, -1);
+    const line = lines[i];
+    if (line.trim() === '' || /^#/.test(line)) continue;
+    if (/^\s/.test(line)) {
+      errors.push(`${at(i)} is indented but belongs to no key; put each top-level key at the start of its line`);
+      continue;
     }
-    fields[m[1]] = value;
+    const m = line.match(/^([A-Za-z0-9_-]+):(?: (.*))?$/);
+    if (!m) {
+      errors.push(`${at(i)} is not a "key: value" line`);
+      continue;
+    }
+    const key = m[1];
+    const raw = (m[2] ?? '').replace(/\s+$/, '');
+    if (Object.prototype.hasOwnProperty.call(fields, key)) errors.push(`${at(i)}: the key "${key}" appears twice`);
+    const isIndented = (j) => j < lines.length && (/^\s+\S/.test(lines[j]) || lines[j].trim() === '');
+    let value;
+    if (/^[>|][-+]?$/.test(raw)) {
+      const block = [];
+      while (isIndented(i + 1)) block.push(lines[++i].trim());
+      value = raw.startsWith('>') ? block.join(' ').replace(/\s+/g, ' ').trim() : block.join('\n').trim();
+    } else if (raw === '') {
+      // A nested block (metadata: and its indented lines) is kept as text and not checked further.
+      const block = [];
+      while (isIndented(i + 1)) block.push(lines[++i]);
+      value = block.join('\n').trim();
+    } else if (raw.startsWith('"')) {
+      const parsed = doubleQuoted(raw);
+      if (parsed.error) errors.push(`${at(i)}: ${parsed.error}`);
+      value = parsed.value ?? '';
+    } else if (raw.startsWith("'")) {
+      if (!/^'(?:[^']|'')*'$/.test(raw)) errors.push(`${at(i)}: a single-quoted value must end with ' on the same line, and a ' inside it is written ''`);
+      value = raw.slice(1, -1).replace(/''/g, "'");
+    } else {
+      const problem = plainScalarProblem(raw);
+      if (problem) errors.push(`${at(i)}: the value of "${key}" ${problem}; put the whole value in double quotes`);
+      value = raw;
+    }
+    if (!/^[>|]/.test(raw) && raw !== '' && isIndented(i + 1) && lines[i + 1].trim() !== '') {
+      errors.push(`${at(i + 1)} continues the value of "${key}" on a new line; keep it on one line, or use >`);
+      while (isIndented(i + 1)) i++;
+    }
+    fields[key] = value;
   }
-  return fields;
+  return { fields, errors };
+}
+
+/** Why a one-line plain (unquoted) YAML scalar would not be read as the text it shows, or null. */
+function plainScalarProblem(value) {
+  if (/^[\[\]{}#&*!|>'"%@`,]/.test(value)) return `starts with "${value[0]}", which YAML reads as syntax`;
+  if (/^[-?:](\s|$)/.test(value)) return `starts with "${value[0]} ", which YAML reads as syntax`;
+  if (/:(\s|$)/.test(value)) return 'holds a colon followed by a space (or ends with a colon), which YAML reads as a new key';
+  if (/\s#/.test(value)) return 'holds " #", which YAML reads as the start of a comment';
+  return null;
+}
+
+/** A one-line YAML double-quoted scalar: its text, or why it is not valid. */
+function doubleQuoted(raw) {
+  const simple = { '0': '\0', a: '\x07', b: '\b', t: '\t', '\t': '\t', n: '\n', v: '\v', f: '\f', r: '\r', e: '\x1b', ' ': ' ', '"': '"', '/': '/', '\\': '\\', N: '\x85', _: '\xa0', L: ' ', P: ' ' };
+  const hex = { x: 2, u: 4, U: 8 };
+  let out = '';
+  for (let k = 1; k < raw.length; k++) {
+    const c = raw[k];
+    if (c === '"') {
+      if (k !== raw.length - 1) return { error: 'a double-quoted value has text after its closing quote; write a " inside it as \\"' };
+      return { value: out };
+    }
+    if (c !== '\\') {
+      out += c;
+      continue;
+    }
+    const e = raw[++k];
+    if (e in simple) out += simple[e];
+    else if (e in hex) {
+      const digits = raw.slice(k + 1, k + 1 + hex[e]);
+      if (!new RegExp(`^[0-9A-Fa-f]{${hex[e]}}$`).test(digits)) return { error: `"\\${e}" needs ${hex[e]} hex digits` };
+      out += String.fromCodePoint(parseInt(digits, 16));
+      k += hex[e];
+    } else return { error: `"\\${e ?? ''}" is not a YAML escape; write a backslash as \\\\` };
+  }
+  return { error: 'a double-quoted value must end with " on the same line' };
 }
 
 function checkSkill(folder) {
   const errors = [];
   const warnings = [];
   const text = readFileSync(join(ROOT, folder, 'SKILL.md'), 'utf8');
-  const fm = frontMatter(text);
-  if (!fm) {
-    errors.push('SKILL.md does not start with a front matter block between two --- lines');
-    return { errors, warnings };
-  }
+  const { fields: fm, errors: yamlErrors } = frontMatter(text);
+  errors.push(...yamlErrors);
+  if (!fm) return { errors, warnings };
   const name = fm.name ?? '';
   const description = fm.description ?? '';
   const descriptionLength = [...description].length;

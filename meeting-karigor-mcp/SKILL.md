@@ -50,6 +50,8 @@ Before the meeting, a person, or their AI over MCP, plans it with a brief: a tit
    - An empty tool list: in ChatGPT, Karigor was not picked with @ in this chat, which says nothing about the switches; or MCP is off, no tool is on, your client connected before the switches were on, or the account is not in the organization yet (the invitation not accepted, accepted with another email, or the person never signed in to the app). The list is read when the client connects and does not refresh by itself, so the user reconnects after any change.
 
    Never send the user to the owner when the sentence names a super admin, or to Karigor when it names the owner. While Meeting Karigor is `karigorOff` or `notGranted`, its tools never show under `offInYourOrg`. After the super admin's change, the user reconnects and you call `myAccess` again: the owner may still have to turn the meeting tools on at Settings, MCP access.
+
+   Report only what the meeting work needs: Meeting Karigor and its tools. Another karigor that is not `on`, or another tool under `offInYourOrg` (for example `feedbackSubmit`, whose job the app's Feedback button also does), may be off on purpose: mention it in one line at most, and send the user to no one about it unless they ask for it.
 7. **Members do not get the memory tools.** `memorySearch`, `memoryTimeline` and `memoryRecall` are for Karigor operator accounts only, whatever the organization turns on. A member searches memory in the app, on Meeting Karigor's Memory tab.
 
 ## Which step happens where
