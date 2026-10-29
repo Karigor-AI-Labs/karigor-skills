@@ -1,6 +1,6 @@
 ---
 name: customer-replies-bangla
-description: Write replies to customers of a Bangladeshi online shop in natural, polite Bangla, or in English or Banglish when the customer writes that way. Works wherever customers message a shop: Facebook Messenger and comments, WhatsApp, Instagram. Use when a seller pastes a customer message and wants a ready-to-send reply, or when setting up a reply assistant for an online shop. Covers price, delivery charge and time, stock, sizes, payment (cash on delivery, bKash, Nagad), taking an order, complaints and polite refusals. Never invents a price, stock level, delivery charge or offer; it works only from the seller's own shop table and asks for one if it is missing.
+description: "Write replies to customers of a Bangladeshi online shop in natural, polite Bangla, or in English or Banglish when the customer writes that way. Works wherever customers message a shop: Facebook Messenger and comments, WhatsApp, Instagram. Use when a seller pastes a customer message and wants a ready-to-send reply, or when setting up a reply assistant for an online shop. Covers price, delivery charge and time, stock, sizes, payment (cash on delivery, bKash, Nagad), taking an order, complaints and polite refusals. Never invents a price, stock level, delivery charge or offer; it works only from the seller's own shop table and asks for one if it is missing."
 ---
 
 # Customer replies for online shops, in Bangla
