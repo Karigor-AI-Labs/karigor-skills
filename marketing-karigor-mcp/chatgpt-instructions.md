@@ -1,12 +1,12 @@
 # Using Marketing Karigor through MCP: ChatGPT instructions
 
-Use this if you work in ChatGPT. It is the same skill, written as instructions you paste once.
+Use this if you work in ChatGPT. It is the same skill, written as instructions you paste into a chat (or into a GPT or Project, as a guide only).
 
 ## How to set it up
 
 **With Karigor's tools (ChatGPT):** first add Karigor's MCP server as a plugin, signed in with your own Karigor account. Ask Karigor for the server address (hello@karigor.ai). In ChatGPT, look for Plugins, the plus button, then "Add custom MCP server": name it Karigor, put the address under Connection, choose sign-in by OAuth, accept the risk warning, press "Create as a plugin", and install it. Whether ChatGPT offers this depends on your plan and your workspace's rules. Then start a chat, type @ and pick Karigor, and paste everything inside the box below as your first message. OpenAI's pages show a custom MCP plugin used only this way, in a chat. We have not tested ChatGPT with Karigor's MCP yet.
 
-**Guide only, without Karigor's tools:** a Custom GPT (in ChatGPT, open GPTs, choose Create, go to the Configure tab, and paste the box into **Instructions**) or a Project (paste the box into the Project's instructions). These walk you through the Karigor app step by step, but they cannot see or change anything in Karigor.
+**Guide only, without Karigor's tools:** a Custom GPT (in ChatGPT, open GPTs, choose Create, go to the Configure tab, and paste the box into **Instructions**) or a Project (paste the box into the Project's instructions). These walk you through the Karigor app step by step, but they cannot see or change anything in Karigor. The box is about 11,000 characters: if the Instructions field does not take all of it, paste it as the first message of a chat instead.
 
 **No GPT or Project?** Paste the box as the first message of a new chat.
 
@@ -14,10 +14,10 @@ Then ask in plain words: "Plan next week with Marketing Karigor", "What is waiti
 
 ## বাংলায় সংক্ষেপে
 
-নিচের বক্সের লেখাটা ChatGPT-তে বসালে সে কারিগরের MCP দিয়ে আপনার মার্কেটিং কারিগর ঠিক নিয়মে চালাবে: আগে পড়বে, আপনি চাইলে তবেই পরিকল্পনা চাইবে, খরচ জানাবে, আর অনুমোদনের কাজ আপনার জন্য রেখে দিবে।
-১. কারিগরের টুল ব্যবহার করতে চাইলে আগে ChatGPT-তে কারিগরের MCP সার্ভারটা plugin হিসেবে যুক্ত করুন, আপনার নিজের কারিগর অ্যাকাউন্ট দিয়ে সাইন ইন করে। ঠিকানাটা কারিগরের কাছে চেয়ে নিন। ChatGPT দিয়ে আমরা এটা এখনো পরীক্ষা করি নাই।
+নিচের বক্সের লেখাটা @ দিয়ে Karigor বেছে নেওয়া চ্যাটে বসালে সে কারিগরের MCP দিয়ে আপনার মার্কেটিং কারিগর ঠিক নিয়মে চালাবে: আগে পড়বে, আপনি চাইলে তবেই পরিকল্পনা চাইবে, খরচ জানাবে, আর অনুমোদনের কাজ আপনার জন্য রেখে দিবে।
+১. কারিগরের টুল ব্যবহার করতে চাইলে আগে ChatGPT-তে কারিগরের MCP সার্ভারটা প্লাগইন হিসেবে যুক্ত করুন, আপনার নিজের কারিগর অ্যাকাউন্ট দিয়ে সাইন ইন করে। ঠিকানাটা কারিগরের কাছে চেয়ে নিন। ChatGPT দিয়ে আমরা এটা এখনো পরীক্ষা করি নাই।
 ২. তারপর একটা চ্যাট খুলে @ লিখে Karigor বেছে নিন, আর নিচের লেখাটা পুরোটা সেই চ্যাটের প্রথম মেসেজ হিসেবে পেস্ট করুন।
-৩. শুধু অ্যাপের ধাপ জানতে চাইলে নতুন GPT বা Project বানিয়ে তার Instructions বক্সে লেখাটা পুরোটা পেস্ট করুন। GPT বা Project থেকে কারিগরের টুল পাওয়া যাবে না, তবে সে অ্যাপের প্রতিটা ধাপ বলে দিবে।
+৩. শুধু অ্যাপের ধাপ জানতে চাইলে নতুন GPT বা Project বানিয়ে তার Instructions বক্সে লেখাটা পুরোটা পেস্ট করুন। লেখাটা প্রায় ১১,০০০ অক্ষরের। Instructions বক্সে পুরোটা না ধরলে একটা চ্যাটের প্রথম মেসেজ হিসেবে পেস্ট করুন। GPT বা Project থেকে কারিগরের টুল পাওয়া যাবে না, তবে সে অ্যাপের প্রতিটা ধাপ বলে দিবে।
 ৪. সহজ ভাষায় লিখুন কি চান: "পরের সপ্তাহের পরিকল্পনা চাই", "এই সপ্তাহ কেমন গেল"।
 ৫. পরিকল্পনা অনুমোদন সবসময় আপনি নিজে করবেন, অ্যাপে, পরিকল্পনা ট্যাবে।
 GPT বানানোর সুযোগ না থাকলে নতুন চ্যাটের প্রথম মেসেজে লেখাটা পেস্ট করুন।
@@ -42,6 +42,7 @@ NOT A MARKETING KARIGOR JOB?
 FIRST: YOUR TOOLS
 - If myAccess is in your tool list, call it first, and again after any refusal. It changes nothing.
 - If it is not, read the tool list itself: it shows only what is on for this person. A missing tool is off, not broken.
+- No Karigor tools at all (a Custom GPT, a Project, or a chat where Karigor was not picked with @): guide the user through the app step by step, and do not say a setting is off.
 - Use only tools in the list. If a step needs a missing tool, tell the person which step to do in the app, with the button name.
 - Marketing tools: marketingKarigors, marketingPlanGet, marketingReport (reads); marketingPlanPropose, marketingDelegate (changes).
 - Today, app access alone does not give the tools over MCP. The person needs Content Karigor on the Members page; the organization owner turns MCP and each tool on in the app at Settings, MCP access; a Karigor super admin turns Marketing Karigor on over MCP for the organization and for the person.

@@ -96,7 +96,7 @@ The Marketing Karigor tools are `marketingKarigors`, `marketingPlanGet` and `mar
 
 **Moving a line to another workspace.** Pass `workspaceId` only for another workspace linked to the same Marketing Karigor that has the line's channel. Otherwise the call is refused (`NOT_FOUND` or `WRONG_CHANNEL`). Profile channels (`facebook_profile`, `linkedin_profile`) exist only in person workspaces.
 
-**Calling `marketingDelegate` twice.** Safe. It returns the same item with `created: false`, and the repeat counts no usage. With `draft: true` it asks for a draft only when the item has no Content Karigor draft yet.
+**Calling `marketingDelegate` twice.** Safe. It returns the same item with `created: false`, and the repeat itself counts no usage. With `draft: true` and no Content Karigor draft on the item yet, it asks for one, which counts one use and costs 1 credit (0 on a custom package).
 
 **A refusal.** Most errors arrive as `CODE: message`. Read the sentence and act on it:
 

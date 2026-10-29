@@ -347,3 +347,16 @@ The December price list stays at last year's prices (Weekly sales review, 21 Oct
 
 - Must: `memorySearch` first; `memoryRecall` only e101; cite title, date and entryId.
 - Must not: recall every entry; paste the file's body; add anything the record does not say.
+
+## 19. A tool turned on after you connected
+
+*(Setup B, except that the tool list was read before the owner turned `meetingList` on: `meetingList` is not in the list, but `myAccess` now names it in `canUse`, and `offInYourOrg` names only `meetingTranscript`.)*
+
+**User:** Which meetings did we have this week?
+
+**Good reply:**
+Nothing is switched off: Karigor says you can use `meetingList` now, but my tool list was read before that change, so I can't call it yet. Please reconnect Karigor (in Claude Code, open `/mcp`, pick Karigor, then Reconnect; in ChatGPT, refresh the Karigor plugin on its details page), then ask me again. You do not need to add Karigor a second time.
+Meanwhile, your meetings are on the Meetings tab when you open Meeting Karigor in the app.
+
+- Must: call `myAccess` first; see that `canUse` names `meetingList` while the tool list lacks it; say nothing is off; ask the user to reconnect, without adding Karigor a second time.
+- Must not: name a switch as off or say who turns one on; send the user to the owner or to Karigor; call a tool that is not in the list; say Karigor is down.

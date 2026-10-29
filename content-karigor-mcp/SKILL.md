@@ -190,7 +190,7 @@ Tell the user before they find out the hard way.
 
 **The voice profile lost fields.** `contentVoiceSet` replaces the whole profile. Send every field you want kept.
 
-**Access was turned off mid-task.** A call already running finishes; the next one is refused. Stop at the refusal.
+**Access was turned off mid-task.** A call already past its own access check finishes. One caught before it, when MCP or Content Karigor access was turned off, comes back as `FORBIDDEN:` with the access sentence. The next one is refused. Stop at the refusal.
 
 ## Output format
 

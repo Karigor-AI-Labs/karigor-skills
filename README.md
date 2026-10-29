@@ -32,7 +32,7 @@ These need a Karigor account and an AI assistant connected to Karigor's MCP serv
 ## What is in each folder
 
 - `SKILL.md`: the skill itself, in the open Agent Skills format. Claude, Codex and other tools that read this format can use it directly.
-- `chatgpt-instructions.md`: the same skill as instructions you paste into a ChatGPT Custom GPT, a Project, or a new chat. Includes a short guide in Bangla. For the three MCP skills, Karigor's tools work only in a chat where you picked Karigor with @ and pasted the box as the first message; a Custom GPT, a Project or a Gem with the box guides you through the app only.
+- `chatgpt-instructions.md`: the same skill as instructions you paste into a ChatGPT Custom GPT, a Project, or a new chat. Includes a short guide in Bangla. For the three MCP skills: in ChatGPT, Karigor's tools work only in a chat where you picked Karigor with @; paste the box as that chat's first message. A Custom GPT, a Project or a Gem with the box guides you through the app only.
 - `examples.md`: the test suite. If the assistant's answers meet every "Must" and "Must not" line, the skill is working.
 - `README.md`: who it is for and how to start.
 - `setup-prompt.md` (in `meeting-karigor-mcp`): a prompt, in English and in Bangla, that a new user pastes into their own AI to connect Karigor's MCP server and install the skill, step by step.
