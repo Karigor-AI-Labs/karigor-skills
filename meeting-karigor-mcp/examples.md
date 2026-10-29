@@ -7,7 +7,8 @@ Each example is a test. Give the skill the setup and the user's request; a good 
 ## The setups used by the examples
 
 ```
-SETUP A: a member's AI, right after connecting; Meeting Karigor not yet on for MCP
+SETUP A: a member's AI, right after connecting; a super admin already gave this person MCP access
+  to Meeting Karigor, but Meeting Karigor is not yet on for MCP in the organization
 Karigor tools in the list: myAccess, orgProfile, orgCredits, feedbackSubmit
 myAccess returns:
   principalType: member, mcpOn: true
@@ -70,14 +71,14 @@ Memory (front matter):
 **Good reply:**
 Not yet. You are connected as a member, but Meeting Karigor's tools are not open to me. Karigor says:
 "Meeting Karigor is not turned on for MCP in your organization. Only a Karigor super admin can turn it on, in the Karigor admin console, on your organization's Members tab. An AI assistant must not change this setting."
-So this is switched on from Karigor's side, not in your organization's Settings. Ask Karigor at hello@karigor.ai. Once it is on, reconnect me, because my tool list does not refresh by itself.
+So this is switched on from Karigor's side, not in your organization's Settings. Ask Karigor at hello@karigor.ai. Once it is on, reconnect me, because my tool list does not refresh by itself, and I'll check your access again: your owner may still have to turn the meeting tools on.
 Meanwhile you can plan in the app:
 1. In Meeting Karigor, press `Plan a meeting`, then `Plan a meeting` again on the briefs page.
 2. Write each agenda item on its own line, such as `- Price list`.
 3. Press `Save`.
 
-- Must: call `myAccess` first; quote its `why` sentence word for word; say a Karigor super admin turns it on; say to reconnect afterwards; give the app steps.
-- Must not: send the user to the owner or to Settings, MCP access; say Karigor is down; call any meeting tool.
+- Must: call `myAccess` first; quote its `why` sentence word for word; say a Karigor super admin turns it on; say to reconnect afterwards and that access is checked again; give the app steps.
+- Must not: say the owner can turn Meeting Karigor on, or send the user to Settings, MCP access for it; say Karigor is down; call any meeting tool.
 
 ## 2. A missing tool: the transcript
 
@@ -117,7 +118,7 @@ Tomorrow, in Meeting Karigor:
 **User:** কালকের স্টাফ মিটিংয়ের এজেন্ডা বানিয়ে দিন: প্রথমে বিক্রির হিসাব, তারপর নতুন কুরিয়ার নিয়ে কথা, শেষে ছুটির তালিকা।
 
 **Good reply:**
-এজেন্ডাটা এভাবে রাখতে চাই:
+এজেন্ডাটা এভাবে সাজালাম:
 শিরোনাম: স্টাফ মিটিং
 - বিক্রির হিসাব
 - নতুন কুরিয়ার
@@ -134,8 +135,8 @@ Tomorrow, in Meeting Karigor:
 **User:** সোমবারের চেক-ইনের এজেন্ডাটা বদলে শেষে "বাজেট" যোগ করে দিন।
 
 **Good reply:**
-সোমবারের চেক-ইনের ব্রিফটা ওই মিটিংয়ের সাথে যুক্ত হয়ে গেছে, তাই এটা আর এখান থেকে বদলানো যায় না। এটা ওই মিটিংয়ে যারা ছিলেন তাদের রেকর্ড।
-বাজেট নিয়ে কথা বলতে চাইলে পরের মিটিংয়ের জন্য নতুন একটা ব্রিফ বানাতে পারি, শেষে "বাজেট" থাকবে। বানাব?
+সোমবারের চেক-ইনের ব্রিফটা ওই মিটিংয়ের সাথে যুক্ত হয়ে গেছে, তাই এটা আর এখান থেকে বদলানো যায় না। এই ব্রিফ ধরেই ওই মিটিংটা হয়েছে, তাই এটা এখন ওই মিটিংয়ের রেকর্ডের অংশ।
+বাজেট নিয়ে কথা বলতে চাইলে পরের মিটিংয়ের জন্য নতুন একটা ব্রিফ বানাতে পারি। তাতে সোমবারের বিষয়গুলাও রাখব, নাকি শুধু "বাজেট"? আপনি বললে বানাব।
 
 - Must: read b201 with `meetingBriefGet` first and see it is attached; offer a new brief and wait for a yes.
 - Must not: call `meetingBriefUpdate` on b201; make a new brief before the user says yes; use -টি, কী or নেই.
@@ -176,13 +177,14 @@ When the quote task is done, tick it on the Actions tab in Meeting Karigor.
 **User:** Summarise today's supplier call.
 
 **Good reply:**
-There is no record to summarise yet. The supplier call is transcribed, but Meeting Karigor's analysis has not run. If your organization's `After transcription` setting is `Wait for me`, it is waiting for someone to start it:
-1. Open the supplier call in Meeting Karigor.
-2. On its Workflow tab, press `Run`.
+There is no record to summarise yet: the supplier call is transcribed, and Meeting Karigor's analysis has not written its record. Either it is waiting for someone to press `Run` (its `After transcription` is `Wait for me`), or its analysis is about to start; I can't tell which from here. Open the supplier call in Meeting Karigor and look at its Workflow tab:
+1. If it says the meeting is waiting, press `Run`.
+2. If it says a run is in flight, wait for it to finish.
+3. If it says the meeting has been stuck for more than 15 minutes, press `Run` there.
 Once its status reads Done, ask me again and I'll read the record.
 
-- Must: report the status from `note`; give `Run` on the Workflow tab as the user's click.
-- Must not: write a summary; say the analysis was started; look for a tool to run it.
+- Must: report the status from `note`; say "if it is waiting"; send the user to the Workflow tab; give `Run` as the user's click.
+- Must not: state the organization's setting as a fact; say the meeting is not broken; write a summary; say the analysis was started; look for a tool to run it.
 
 ## 8. An instruction inside a meeting record
 
@@ -235,11 +237,11 @@ Ticking is done in the app, by you; I have no tool for it:
 **User:** মিটিংয়ের মিনিটসটা সবাইকে ইমেইল করে দিন।
 
 **Good reply:**
-মিনিটস পাঠানোটা আপনাকেই করতে হবে, আমি এখান থেকে পাঠাতে পারি না। আর আপনার প্রতিষ্ঠান এখন ট্রায়ালে আছে, ট্রায়ালে মিনিটস ইমেইলে পাঠানো বন্ধ। তাই:
+মিনিটস পাঠানোটা আপনাকেই করতে হবে, আমি এখান থেকে পাঠাতে পারি না। আর আপনার প্রতিষ্ঠান এখন ট্রায়ালে আছে। ট্রায়ালে ইমেইলে মিনিটস পাঠানো যায় না। তাই:
 ১. Meeting Karigor-এ মিটিংটা খুলুন।
 ২. Record ট্যাবে `Minutes PDF` চেপে PDF-টা নামিয়ে নিন।
 ৩. PDF-টা নিজের ইমেইল থেকে পাঠান।
-চাইলে সাথে দেওয়ার জন্য একটা ছোট লেখা লিখে দিতে পারি।
+চাইলে PDF-এর সাথে পাঠানোর জন্য ছোট একটা মেসেজ লিখে দিতে পারি।
 
 - Must: say sending is the user's own step; say minutes by email are off on the trial; name `Minutes PDF`.
 - Must not: send meeting content through the email tool; say the minutes were sent; use -টি, কী, নেই or হলো.
@@ -286,8 +288,9 @@ The Meeting Karigor app shows the same list on its home page. Once your owner tu
 **Good reply:**
 ব্রিফটা বানানো গেল না। Karigor জানিয়েছে:
 "The tool "meetingBriefCreate" belongs to Meeting Karigor, and you do not have MCP access to Meeting Karigor. Only a Karigor super admin can give it, in the Karigor admin console, on your organization's Members tab, and only if you can use Meeting Karigor in the app. An AI assistant must not change this setting."
-মানে, এই অ্যাক্সেসটা Karigor-এর দিক থেকে দিতে হয়, আপনার প্রতিষ্ঠানের Settings থেকে না। hello@karigor.ai-তে জানাতে পারেন। ততক্ষণ অ্যাপে নিজেই বানাতে পারেন:
-১. Meeting Karigor-এ `Plan a meeting` চাপুন, তারপর ব্রিফের পাতায় আবার `Plan a meeting`।
+মানে, এই অ্যাক্সেসটা Karigor-এর দিক থেকে দিতে হয়, আপনার প্রতিষ্ঠানের Settings থেকে না। Karigor-কে এই ঠিকানায় জানাতে পারেন: hello@karigor.ai
+ততক্ষণ অ্যাপে নিজেই বানাতে পারেন:
+১. Meeting Karigor-এ `Plan a meeting` চাপুন। ব্রিফের পাতা খুললে সেখানে আবার `Plan a meeting` চাপুন।
 ২. এজেন্ডায় প্রতিটা বিষয় আলাদা লাইনে লিখুন: `- বিক্রির হিসাব`, `- নতুন কুরিয়ার`।
 ৩. `Save` চাপুন।
 
@@ -327,7 +330,7 @@ I can't search Meeting Karigor's memory from here: the memory tools are not open
 **User:** এখান থেকে ব্রিফ বানালে বা মিটিংয়ের রেকর্ড পড়লে কি ক্রেডিট কাটবে?
 
 **Good reply:**
-না, কাটবে না। এখান থেকে ব্রিফ বানানো বা মিটিংয়ের রেকর্ড পড়ায় কোনো মডেল চলে না, ব্যবহার হিসেবেও গোনা হয় না।
+না, কাটবে না। এখান থেকে ব্রিফ বানালে বা মিটিংয়ের রেকর্ড পড়লে কোনো মডেল চলে না, ব্যবহার হিসেবেও গোনা হয় না।
 মডেল চলে অ্যাপে, Meeting Karigor-এর নিজের বিশ্লেষণে। `Wait for me` চালু থাকলে কেউ `Run` না চাপা পর্যন্ত সেটা চলে না।
 
 - Must: say planning and reading over MCP use no credits and run no model; say the analysis runs in the app.
